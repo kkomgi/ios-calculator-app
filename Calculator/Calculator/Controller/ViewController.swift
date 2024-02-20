@@ -194,6 +194,7 @@ class ViewController: UIViewController {
         
         if !isOperatorActivated {
             updateExpression()
+            addLogToStackView(stackView: logsStackView)
             operand = "0"
             isOperatorActivated = true
         }
@@ -214,6 +215,7 @@ class ViewController: UIViewController {
         }
         
         updateExpression()
+        addLogToStackView(stackView: logsStackView)
         
         do {
             var formula = ExpressionParser.parse(from: expression)
