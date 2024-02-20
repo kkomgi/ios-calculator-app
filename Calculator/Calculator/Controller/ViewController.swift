@@ -25,6 +25,14 @@ fileprivate extension String {
         
         return formattedString
     }
+    
+    func countDigit() -> Int {
+        guard let _ = Double(self) else {
+            return 0
+        }
+        
+        return self.filter { $0 != "." }.count
+    }
 }
 
 class ViewController: UIViewController {
