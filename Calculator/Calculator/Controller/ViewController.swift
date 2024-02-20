@@ -181,7 +181,16 @@ class ViewController: UIViewController {
     }
     
     @IBAction func dotButtonTouchedUp(_ sender: UIButton) {
+        guard !errorHasOccured, !operand.contains(".") else {
+            return
+        }
         
+        isOperatorActivated = false
+        
+        operand += "."
+        
+        updateOperatorLabel()
+        updateOperandLabel(form: .input)
     }
     
     @IBAction func numberButtonTouchedUp(_ sender: UIButton) {
