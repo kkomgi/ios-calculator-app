@@ -2,7 +2,7 @@
 //  ExpressionParser.swift
 //  Calculator
 //
-//  Created by Jaehun Lee on 2/13/24.
+//  Created by Prism, Hamzzi on 2/13/24.
 //
 
 protocol Parsable<Input, Output> {
@@ -13,16 +13,22 @@ protocol Parsable<Input, Output> {
 
 enum ExpressionParser: Parsable {
     static func parse(from input: String) -> Formula {
-        var operands: CalculatorItemQueue<Double> = .init()
-        var operators: CalculatorItemQueue<Operator> = .init()
+        var operands = CalculatorItemQueue<Double>()
+        var operators = CalculatorItemQueue<Operator>()
         
-        let operandsArr = componentsByOperators(from: input)
-            .compactMap(Double.init)
-        let operatorsArr = input
-            .compactMap(Operator.init)
+        let components = componentsByOperators(from: input)
         
-        operandsArr.forEach { operands.enqueue(element: $0) }
-        operatorsArr.forEach { operators.enqueue(element: $0) }
+        components.forEach { component in
+            if let value = Double(component) {
+                operands.enqueue(value)
+            }
+        }
+        
+        input.forEach { char in
+            if let operatorValue = Operator(rawValue: char) {
+                operators.enqueue(operatorValue)
+            }
+        }
         
         return Formula(operands: operands, operators: operators)
     }

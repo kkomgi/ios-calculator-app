@@ -2,7 +2,8 @@
 //  Operator.swift
 //  Calculator
 //
-//  Created by Jaehun Lee on 2/12/24.
+
+//  Created by Prism, Hamzzi on 2/12/24.
 //
 
 enum Operator: Character, CaseIterable, CalculateItem {
@@ -12,6 +13,7 @@ enum Operator: Character, CaseIterable, CalculateItem {
     case multiply = "×"
     
     func calculate(lhs: Double, rhs: Double) throws -> Double {
+
         switch self {
         case .add:
             return add(lhs: lhs, rhs: rhs)

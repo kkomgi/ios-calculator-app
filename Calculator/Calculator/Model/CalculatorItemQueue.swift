@@ -2,7 +2,7 @@
 //  CalculatorItemQueue.swift
 //  Calculator
 //
-//  Created by Jaehun Lee on 2/6/24.
+//  Created by Prism, Hamzzi on 2/6/24.
 //
 
 protocol CalculateItem {

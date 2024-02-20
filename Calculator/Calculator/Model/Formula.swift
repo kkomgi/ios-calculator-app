@@ -2,7 +2,7 @@
 //  Formula.swift
 //  Calculator
 //
-//  Created by Jaehun Lee on 2/12/24.
+//  Created by Prism, Hamzzi on 2/12/24.
 //
 
 struct Formula {
