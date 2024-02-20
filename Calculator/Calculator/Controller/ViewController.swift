@@ -48,6 +48,11 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        removeAllFromStackView(stackView: logsStackView)
+        
+        updateOperatorLabel()
+        updateOperandLabel(form: .output)
     }
     
     func removeAllFromStackView(stackView: UIStackView) {
