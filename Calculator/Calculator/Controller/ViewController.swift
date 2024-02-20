@@ -6,6 +6,11 @@
 
 import UIKit
 
+enum StringForm {
+    case input
+    case output
+}
+
 class ViewController: UIViewController {
     var expression = ""
     var `operator`: Operator?
@@ -15,11 +20,30 @@ class ViewController: UIViewController {
     
     @IBOutlet var operatorLabel: UILabel!
     @IBOutlet var operandLabel: UILabel!
-    
     @IBOutlet var logsStackView: UIStackView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    func updateExpression() {
+        
+    }
+    
+    func updateOperatorLabel() {
+        
+    }
+    
+    func updateOperandLabel(form: StringForm) {
+        
+    }
+    
+    func convertToInputForm(operand: String) {
+        
+    }
+    
+    func convertToOutputForm(operand: String) {
+        
     }
 
     @IBAction func acButtonTouchedUP(_ sender: UIButton) {
