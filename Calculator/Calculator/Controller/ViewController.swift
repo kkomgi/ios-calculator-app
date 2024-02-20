@@ -202,6 +202,25 @@ class ViewController: UIViewController {
     }
     
     @IBAction func numberButtonTouchedUp(_ sender: UIButton) {
+        guard !errorHasOccured,
+              let numberStringFromButton = sender.currentTitle,
+              operand.countDigit() + numberStringFromButton.count <= 20 else {
+            return
+        }
         
+        if operand == "0" {
+            guard !numberStringFromButton.contains("0") else {
+                return
+            }
+            
+            operand = numberStringFromButton
+        } else {
+            operand += numberStringFromButton
+        }
+        
+        isOperatorActivated = false
+        
+        updateOperatorLabel()
+        updateOperandLabel(form: .input)
     }
 }
