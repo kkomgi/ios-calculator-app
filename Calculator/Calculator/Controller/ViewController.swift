@@ -43,7 +43,11 @@ class ViewController: UIViewController {
     }
     
     func updateExpression() {
+        if let `operator` = `operator` {
+            expression += String(`operator`.rawValue)
+        }
         
+        expression += operand
     }
     
     func updateOperatorLabel() {
