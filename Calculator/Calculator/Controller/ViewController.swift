@@ -77,8 +77,10 @@ class ViewController: UIViewController {
         }
     }
     
-    func convertToOutputForm(operand: String) {
+    func convertToOutputForm(operand: String) -> String {
+        let formattedOperand = operand.toFormattedString(style: .decimal)
         
+        return formattedOperand
     }
 
     @IBAction func acButtonTouchedUP(_ sender: UIButton) {
