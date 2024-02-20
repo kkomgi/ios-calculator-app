@@ -55,7 +55,12 @@ class ViewController: UIViewController {
     }
     
     func updateOperandLabel(form: StringForm) {
-        
+        switch form {
+        case .input:
+            operandLabel.text = convertToInputForm(operand: operand)
+        case .output:
+            operandLabel.text = convertToOutputForm(operand: operand)
+        }
     }
     
     func convertToInputForm(operand: String) -> String {
