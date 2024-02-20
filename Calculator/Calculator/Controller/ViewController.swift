@@ -116,7 +116,19 @@ class ViewController: UIViewController {
     }
     
     @IBAction func signToggleButtonTouchedUp(_ sender: UIButton) {
+        guard !errorHasOccured, Double(operand) != 0.0,
+              let firstCharacterOfOperand = operand.first else {
+            return
+        }
         
+        if firstCharacterOfOperand == "-" {
+            operand = String(operand[operand.index(operand.startIndex, offsetBy: 1)...])
+        } else {
+            operand = "-" + operand
+        }
+        
+        updateOperatorLabel()
+        updateOperandLabel(form: .input)
     }
     
     @IBAction func operatorButtonTouchedUp(_ sender: UIButton) {
