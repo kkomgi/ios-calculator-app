@@ -153,7 +153,31 @@ class ViewController: UIViewController {
     }
     
     @IBAction func calculateButtonTouchedUp(_ sender: UIButton) {
+        guard !errorHasOccured else {
+            return
+        }
         
+        updateExpression()
+        
+        do {
+            var formula = ExpressionParser.parse(from: expression)
+            let result = try formula.result()
+            
+            operand = String(result)
+        } catch CalculateError.divisionByZero {
+            operand = "NaN"
+            errorHasOccured = true
+        } catch {
+            operand = "ERROR"
+            errorHasOccured = true
+        }
+        
+        expression = ""
+        `operator` = nil
+        isOperatorActivated = false
+        
+        updateOperatorLabel()
+        updateOperandLabel(form: .output)
     }
     
     @IBAction func dotButtonTouchedUp(_ sender: UIButton) {
