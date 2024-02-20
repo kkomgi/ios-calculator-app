@@ -58,8 +58,23 @@ class ViewController: UIViewController {
         
     }
     
-    func convertToInputForm(operand: String) {
-        
+    func convertToInputForm(operand: String) -> String {
+        if let firstIndexOfDot = operand.firstIndex(of: ".") {
+            let integer = String(operand[..<firstIndexOfDot])
+            let fraction = String(operand[operand.index(firstIndexOfDot, offsetBy: 1)...])
+            
+            let formattedInteger = integer.toFormattedString(style: .decimal)
+            
+            if fraction == "" {
+                return formattedInteger + "."
+            } else {
+                return formattedInteger + "." + fraction
+            }
+        } else {
+            let formattedOperand = operand.toFormattedString(style: .decimal)
+            
+            return formattedOperand
+        }
     }
     
     func convertToOutputForm(operand: String) {
