@@ -11,6 +11,22 @@ enum StringForm {
     case output
 }
 
+fileprivate extension String {
+    func toFormattedString(style: NumberFormatter.Style) -> String {
+        let numberFormatter = NumberFormatter()
+        
+        numberFormatter.usesSignificantDigits = true
+        numberFormatter.maximumSignificantDigits = 20
+        numberFormatter.numberStyle = style
+        
+        guard let formattedString = numberFormatter.string(for: Double(self)) else {
+            return self
+        }
+        
+        return formattedString
+    }
+}
+
 class ViewController: UIViewController {
     var expression = ""
     var `operator`: Operator?
