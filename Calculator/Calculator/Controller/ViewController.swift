@@ -58,6 +58,41 @@ class ViewController: UIViewController {
             }
     }
     
+    func addLogToStackView(stackView: UIStackView) {
+        let logStackView = UIStackView()
+        logStackView.axis = .horizontal
+        logStackView.spacing = 8
+        
+        let operatorLog = UILabel()
+        operatorLog.textColor = .white
+        operatorLog.font = .preferredFont(forTextStyle: .title3)
+        operatorLog.textAlignment = .right
+        operatorLog.adjustsFontForContentSizeCategory = true
+        operatorLog.adjustsFontSizeToFitWidth = true
+        operatorLog.minimumScaleFactor = 0.5
+        
+        let operandLog = UILabel()
+        operandLog.textColor = .white
+        operatorLog.font = .preferredFont(forTextStyle: .title3)
+        operatorLog.textAlignment = .right
+        operatorLog.adjustsFontForContentSizeCategory = true
+        operatorLog.adjustsFontSizeToFitWidth = true
+        operatorLog.minimumScaleFactor = 0.5
+        
+        if let `operator` = `operator` {
+            operatorLog.text = String(`operator`.rawValue)
+        } else {
+            operatorLog.text = ""
+        }
+        
+        operandLog.text = convertToInputForm(operand: operand)
+        
+        logStackView.addArrangedSubview(operatorLog)
+        logStackView.addArrangedSubview(operandLog)
+        
+        stackView.addArrangedSubview(logStackView)
+    }
+    
     func updateExpression() {
         if let `operator` = `operator` {
             expression += String(`operator`.rawValue)
