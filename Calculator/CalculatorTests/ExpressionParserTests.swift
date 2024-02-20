@@ -34,7 +34,7 @@ final class ExpressionParserTests: XCTestCase {
     
     func test_Parse() {
         // Given
-        let expression = "120.0/3.+-20−10.0*4.0/2.0"
+        let expression = "120.0÷3.+-20−10.0×4.0÷2.0"
         
         // When
         let resultFormula = ExpressionParser.parse(from: expression)
