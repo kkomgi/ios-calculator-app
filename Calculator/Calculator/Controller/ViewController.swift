@@ -155,6 +155,8 @@ class ViewController: UIViewController {
         isOperatorActivated = false
         errorHasOccured = false
         
+        removeAllFromStackView(stackView: logsStackView)
+        
         updateOperatorLabel()
         updateOperandLabel(form: .output)
     }
