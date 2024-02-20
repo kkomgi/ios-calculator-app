@@ -104,7 +104,15 @@ class ViewController: UIViewController {
     }
     
     @IBAction func ceButtonTouchedUp(_ sender: UIButton) {
+        guard !errorHasOccured else {
+            return
+        }
         
+        operand = "0"
+        isOperatorActivated = false
+        
+        updateOperatorLabel()
+        updateOperandLabel(form: .output)
     }
     
     @IBAction func signToggleButtonTouchedUp(_ sender: UIButton) {
