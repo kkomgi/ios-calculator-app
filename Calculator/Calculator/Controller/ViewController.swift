@@ -120,7 +120,24 @@ class ViewController: UIViewController {
     }
     
     @IBAction func operatorButtonTouchedUp(_ sender: UIButton) {
+        guard !errorHasOccured else {
+            return
+        }
         
+        if !isOperatorActivated {
+            updateExpression()
+            operand = "0"
+            isOperatorActivated = true
+        }
+        
+        guard let operatorStringFromButton = sender.currentTitle else {
+            return
+        }
+        
+        `operator` = Operator(rawValue: Character(operatorStringFromButton))
+        
+        updateOperatorLabel()
+        updateOperandLabel(form: .output)
     }
     
     @IBAction func calculateButtonTouchedUp(_ sender: UIButton) {
