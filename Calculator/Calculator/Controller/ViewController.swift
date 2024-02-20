@@ -31,7 +31,11 @@ class ViewController: UIViewController {
     }
     
     func updateOperatorLabel() {
-        
+        if let `operator` = `operator` {
+            operatorLabel.text = String(`operator`.rawValue)
+        } else {
+            operatorLabel.text = ""
+        }
     }
     
     func updateOperandLabel(form: StringForm) {
