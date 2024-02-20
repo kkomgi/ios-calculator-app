@@ -50,6 +50,14 @@ class ViewController: UIViewController {
         super.viewDidLoad()
     }
     
+    func removeAllFromStackView(stackView: UIStackView) {
+        stackView.arrangedSubviews
+            .forEach {
+                logsStackView.removeArrangedSubview($0)
+                $0.removeFromSuperview()
+            }
+    }
+    
     func updateExpression() {
         if let `operator` = `operator` {
             expression += String(`operator`.rawValue)
