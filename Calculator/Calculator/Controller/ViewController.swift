@@ -93,7 +93,14 @@ class ViewController: UIViewController {
     }
 
     @IBAction func acButtonTouchedUP(_ sender: UIButton) {
+        expression = ""
+        `operator` = nil
+        operand = "0"
+        isOperatorActivated = false
+        errorHasOccured = false
         
+        updateOperatorLabel()
+        updateOperandLabel(form: .output)
     }
     
     @IBAction func ceButtonTouchedUp(_ sender: UIButton) {
