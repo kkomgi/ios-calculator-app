@@ -69,8 +69,7 @@
 
 ### 6. 트러블슈팅
 
-#### Calculator/Calculator/Model/Formula.swift
-
+#### *Calculator/Calculator/Model/Formula.swift*
 ```swift
 // 변경 전
 -    mutating func result() -> Double {
@@ -97,7 +96,6 @@
          }
 +        
 ```
-
 - 수식의 유효성 검증: 초기 코드는 피연산자들만을 더하는 간단한 계산을 수행했고, 연산자의 유무나 수식의 정확성을 검증하지 않았습니다. 변경된 코드는 피연산자의 수가 연산자 수보다 하나 더 많은지 확인합니다. 수식이 유효한지 먼저 검증합니다. 이것은 수식의 구조적 정확성을 보장합니다.
 - 오류 처리: 변경 전 코드는 잘못된 수식이 입력되었을 때 이를 대응하는 방법이 없었습니다. 수정된 코드는 
 유효하지 않은 수식이 입력되었을 때 CalculateError.invalidFormula 로 오류를 명확히 알릴 수 있습니다.
@@ -105,8 +103,8 @@
 - 타입 안전성: try 키워드의 사용으로 인해, calculate 메소드가 오류를 던질 가능성이 있는 경우 이를 명시적으로 처리할 수 있게 되었습니다.
 
 
-#### Calculator/Calculator/Model/CalculatorItemQueue.swift
-```swift=
+#### *Calculator/Calculator/Model/CalculatorItemQueue.swift*
+```swift
 // 변경 전
 -    var count: Int {
 -        guard head != nil else { return 0 }
@@ -126,13 +124,12 @@
 // 변경 후
 +    var count: Int = 0
 ```
-
 - 집합에 대해서는 이 방법이 성능 저하를 일으킬 수 있습니다. 변경된 코드에서는 count를 직접 관리함으로써, 큐의 길이를 O(1) 시간 복잡도로 즉시 얻을 수 있게 되었습니다. 이는 특히 큐의 크기가 크거나 count 속성에 자주 접근해야 하는 경우 중요한 성능 이점을 제공합니다.
 - 코드 간소화: 큐의 길이를 계산하기 위해 모든 노드를 순회하는 로직은 코드를 복잡하게 만들고, 오류 발생 가능성을 높일 수 있습니다. count 변수를 직접 업데이트하는 방식으로 변경함으로써 코드의 복잡성을 크게 줄였습니다. 이는 코드의 가독성과 유지보수성을 향상시킵니다.
 - 오류 감소: 노드 순회를 통한 count 계산 방식은 현재 노드를 추적하는 로직에서 실수하기 쉽습니다. 예를 들어, 순회 로직에서 current 노드의 업데이트를 잘못 처리하면 무한 루프나 잘못된 count 값이 발생할 수 있습니다. count 변수를 직접 관리함으로써 이러한 종류의 오류 가능성을 줄일 수 있습니다.
 
 
-#### Calculator/Calculator/Controller/ViewController.swift
+#### *Calculator/Calculator/Controller/ViewController.swift*
 ```swift
 // 변경 전
 -enum StringForm {
@@ -149,14 +146,13 @@ class ViewController: UIViewController {
 +    }
 +    
 ```
-
 - 스코프 제한: StringForm 열거형을 ViewController 내부로 이동시킴으로써, 이 열거형의 사용 범위를 ViewController로 제한합니다. 다른 클래스나 모듈에서 StringForm 열거형을 실수로 잘못 사용하는 것을 방지합니다.
 - 네임스페이스 충돌 방지: 프로젝트 내에 동일한 이름의 다른 열거형이나 타입이 있을 경우, 스코프를 한정짓지 않으면 이름 충돌이 발생할 수 있습니다. ViewController 내부로 StringForm을 이동시킴으로써 이러한 충돌 위험을 줄일 수 있습니다.
 - 코드의 가독성 향상: StringForm 열거형을 클래스 내부에 위치시키면, StringForm과 ViewController와의 관계를 더 쉽게 이해할 수 있습니다.
 - 캡슐화 : 특정 클래스 내에서만 타입이 사용되면 클래스의 내부 구현을 외부로부터 잘 숨겨줍니다. 결과적으로 클래스의 인터페이스만을 통해 상호작용하게 합니다.
 
 
-#### Calculator/Calculator/Controller/ViewController.swift
+#### *Calculator/Calculator/Controller/ViewController.swift*
 ```swift
 // 변경 전
 -class ViewController: UIViewController {
@@ -172,7 +168,7 @@ class ViewController: UIViewController {
 - 상속 방지: final 키워드를 클래스 선언에 추가함으로써, 이 클래스가 다른 클래스에 의해 상속되는 것을 방지합니다. 또한 이것은 확장을 위해 설계되지 않았음을 명시적으로 나타냅니다.
 
 
-#### Calculator/Calculator/Controller/ViewController.swift
+#### *Calculator/Calculator/Controller/ViewController.swift*
 ```swift
 // 변경 전
 -    var expression = ""
@@ -195,7 +191,6 @@ class ViewController: UIViewController {
 +    @IBOutlet private var operandLabel: UILabel!
 +    @IBOutlet private var logsStackView: UIStackView!
 ```
-
 - 캡슐화 강화: private 접근 제어자는 해당 변수나 함수를 정의한 클래스 또는 구조체의 내부에서만 접근할 수 있게 제한합니다.
 - 잘못된 외부 접근 방지: 클래스 내부 상태를 관리하는 변수나 UI 요소가 외부에서 임의로 변경되는 것을 방지합니다.
 
