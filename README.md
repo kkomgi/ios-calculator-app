@@ -15,10 +15,14 @@
 #### **➕➖계산기✖️➗**
 간단한 사칙연산을 수행하는 계산기입니다. 계산할 때마다 계산 내역을 기록해 어떤 계산을 했는 지 스크롤 뷰를 조작해 확인할 수 있습니다. 🔎
 
+<br>
+
 ### 2. 팀원
 | <img src="https://avatars.githubusercontent.com/u/27756800?s=48&v=4" width="200"> | <img src="https://avatars.githubusercontent.com/u/65929788?v=4" width="200"> |
 | :---: | :---: |
 | Prism ([Github](https://github.com/PrismSpirit)) | Hamzzi ([Github](https://github.com/kkomgi)) |
+
+<br>
 
 ### 3. 타임라인
 #### 🗓 2024/02/22
@@ -44,6 +48,8 @@
 ### 4. 프로젝트 구조
 #### Class Diagram
 ![img](<https://raw.githubusercontent.com/kkomgi/ios-calculator-app/Team_step1/Calculator_ClassDiagram.png>)
+
+<br>
 
 ### 5. 실행 화면
 
@@ -125,6 +131,7 @@
 - 코드 간소화: 큐의 길이를 계산하기 위해 모든 노드를 순회하는 로직은 코드를 복잡하게 만들고, 오류 발생 가능성을 높일 수 있습니다. count 변수를 직접 업데이트하는 방식으로 변경함으로써 코드의 복잡성을 크게 줄였습니다. 이는 코드의 가독성과 유지보수성을 향상시킵니다.
 - 오류 감소: 노드 순회를 통한 count 계산 방식은 현재 노드를 추적하는 로직에서 실수하기 쉽습니다. 예를 들어, 순회 로직에서 current 노드의 업데이트를 잘못 처리하면 무한 루프나 잘못된 count 값이 발생할 수 있습니다. count 변수를 직접 관리함으로써 이러한 종류의 오류 가능성을 줄일 수 있습니다.
 
+
 #### Calculator/Calculator/Controller/ViewController.swift
 ```swift
 // 변경 전
@@ -148,6 +155,7 @@ class ViewController: UIViewController {
 - 코드의 가독성 향상: StringForm 열거형을 클래스 내부에 위치시키면, StringForm과 ViewController와의 관계를 더 쉽게 이해할 수 있습니다.
 - 캡슐화 : 특정 클래스 내에서만 타입이 사용되면 클래스의 내부 구현을 외부로부터 잘 숨겨줍니다. 결과적으로 클래스의 인터페이스만을 통해 상호작용하게 합니다.
 
+
 #### Calculator/Calculator/Controller/ViewController.swift
 ```swift
 // 변경 전
@@ -162,6 +170,7 @@ class ViewController: UIViewController {
 ```
 - 명확한 클래스 이름: ViewController에서 CalculateViewController로 이름을 변경함으로써, 이 클래스의 역할과 사용 목적이 더 명확해집니다.
 - 상속 방지: final 키워드를 클래스 선언에 추가함으로써, 이 클래스가 다른 클래스에 의해 상속되는 것을 방지합니다. 또한 이것은 확장을 위해 설계되지 않았음을 명시적으로 나타냅니다.
+
 
 #### Calculator/Calculator/Controller/ViewController.swift
 ```swift
@@ -199,6 +208,8 @@ class ViewController: UIViewController {
 #### 개인적으로 아쉬웠던 점 💦
 - Prism: 사용자 입력이 매우 다양한 조합으로 들어올 수 있기 때문에 정말 많은 경우에 대해 예외 처리를 고려해야 했습니다. 꽤나 많은 예외(소수점은 각 피연산자에 하나만 있어야함, 0으로 나누기, 사용자가 보게되는 숫자에 대해 thousand separator`,`찍기, 결과가 정수일 경우 소수점 생략하기 등)에 대해 적절한 처리를 해주었습니다만 그럼에도 불구하고 처리되지 않은 예외(double형의 정확도 문제, 매우 큰 수에 대해 계산 버튼을 2번 누를 경우 parse가 오작동하는 문제)가 있어 아쉬움이 남았습니다.
 - Hamzzi: 같은 팀원의 진도보다 뒤쳐진 상태였기 때문에 직접 구현한 코드가 매우 기초적인 상태였던 점이 매우 아쉬웠습니다. 또한 그 상태에서 직접 보완하지 못 하였던 점도 있습니다. 하지만 프리즘과 저의 코드가 합쳐지면서 트러블 슈팅을 한 눈에 볼 수 있었습니다. 부족한 시간임에도 계산기 프로젝트의 완성 루트를 확인해볼 수 있었습니다. 좋은 경험이었습니다.
+
+<br>
 
 ### 8. 참고 자료
 📍[Generics](<https://docs.swift.org/swift-book/documentation/the-swift-programming-language/generics>)  
